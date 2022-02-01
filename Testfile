@@ -1,10 +1,19 @@
 pipeline{
-    agent any
+     agent any
+    tools{
+        maven "Maven 3.8.4"
+    }
     stages{
         stage("Firstcase"){
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/PeojectMadhu/MyFirstRepository.git']]])
             }
         }
-    }
+        stage("Build"){
+            steps{
+                sh "mvn clean install"
+            }
+        }
+    }    
+        
 }
