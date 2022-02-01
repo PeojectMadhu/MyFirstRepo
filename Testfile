@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("Firstcase"){
             steps{
-                git branch: 'secondBr', url: 'https://github.com/PeojectMadhu/MyFirstRepository.git'
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/PeojectMadhu/MyFirstRepository.git']]])
             }
         }
     }
